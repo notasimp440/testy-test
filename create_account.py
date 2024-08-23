@@ -14,8 +14,10 @@ def username_adder():
     uname = input("enter username: ")
     pwd = input("enter password: ")
     #get the dictionary from logins.txt
+    dictionary = json.load(open("logins.txt"))
     #append new username and password to the dictionary
     usr_pass = {uname:pwd}
+    dictionary.update(usr_pass)
     with open("logins.txt", "w") as filer:
         filer.write(json.dumps(usr_pass) + "\n")
         
