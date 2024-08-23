@@ -1,4 +1,5 @@
 import json
+
 num_of_user_lines = 1
 num_of_pass_lines = 1
 filer = ""
@@ -10,32 +11,16 @@ def repeat():
         SystemExit
 def username_adder():
     global filer
-    filer = open('username.txt', "r")
-    filew = open('username.txt', "a")
-    wd = input("enter username: ")
-    for line in filer.readlines(num_of_user_lines):
-        if line == str(wd):
-            print("sorry that username has already been taken, please try again.")
-            repeat()
-    if filer.readline(num_of_user_lines) == "":
-        num_of_user_lines + 1
-        filew.write(str(wd))
-    else:
-        num_of_user_lines + 1
-        filew.write("\n" + str(wd))
-    return num_of_user_lines
+    uname = input("enter username: ")
+    pwd = input("enter password: ")
+    #get the dictionary from logins.txt
+    #append new username and password to the dictionary
+    usr_pass = {uname:pwd}
+    with open("logins.txt", "w") as filer:
+        filer.write(json.dumps(usr_pass) + "\n")
+        
 
-def password_adder():
-    filer = open('passwords.txt', "r")
-    filew = open('passwords.txt', "a")
-    wd = input("enter password: ")
-    if filer.readline(num_of_user_lines) == "":
-        num_of_user_lines + 1
-        filew.write(str(wd))
-    else:
-        num_of_user_lines + 1
-        filew.write("\n" + str(wd))
-    return num_of_user_lines
+
 
 
 
@@ -43,6 +28,5 @@ def password_adder():
     
 
 username_adder()
-password_adder()
 
 

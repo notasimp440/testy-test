@@ -4,4 +4,4 @@ def login():
     if acc_check == "y":
         enter_user = input("enter username: ")
         enter_pass = input("enter password")
-        if enter_user == ca.filer.readline()
+        if enter_user == ca.filer.readline():
